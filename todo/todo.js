@@ -47,9 +47,21 @@ const crear = (descripcion) => {
 }
 
 
-const getListado = () => {
+const getListado = (completado) => {
     leerDB();
-    return arrTareas;
+    // si completado no tiene valor se muestran todos los registros, en otro caso se muestran solo los que cumplan la condicion
+    let arrTareasListado = arrTareas;
+    if (completado !== undefined) {
+        completado = completado.toLowerCase();
+        let boolCompletado = false;
+        if (completado == 'true' || completado == 't') {
+            boolCompletado = true;
+        }
+        arrTareasListado = arrTareas.filter(tarea => {
+            return tarea.completado === boolCompletado;
+        })
+    }
+    return arrTareasListado;
 }
 
 

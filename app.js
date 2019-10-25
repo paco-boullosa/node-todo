@@ -13,14 +13,14 @@ switch (comando) {
         break;
 
     case 'listar':
-        let listado = tareas.getListado();
+        let listado = tareas.getListado(argv.completado);
         listado.forEach(tarea => {
             console.log('========= TO DO ========='.green);
             console.log(tarea.descripcion);
             console.log('Estado: ', tarea.completado);
             console.log('-------------------------'.green);
         });
-        // tambien se puede hacer con un blucle:  for (let tarea of listado) {}
+        // tambien se puede hacer con un bucle:  for (let tarea of listado) {}
         break;
 
     case 'actualizar':
